@@ -9,19 +9,16 @@ const setupInput = function(conn) {
   return stdin;
 }
 
-// const handleUserInput = function() {
-  process.stdin.on('data', (key) => {
-  if (key === 'w') {
-    connection.write('Move: up')
-  } else if (key === 'd') {
-    connection.write('Move: right')
-  } else if (key === 's') {
-    connection.write('Move: down')
-  } else if (key === 'a') {
-    connection.write('Move: left')
-  } else if (key === '\u0003') {
-    process.exit();
-  }
-})
-// }
+process.stdin.on('data', (key) => {
+  switch (key) {
+    case '\u0003': process.exit(); break;
+    case 'w': connection.write('Move: up'); break;
+    case 's': connection.write('Move: down'); break;
+    case 'd': connection.write('Move: right'); break;
+    case 'a': connection.write('Move: left'); break;
+    case 'q': connection.write('Say: resistance is futile'); break;
+    case 'e': connection.write('Say: clap CLAP'); break;
+    }
+  });
+
 module.exports = {setupInput};
