@@ -20,6 +20,7 @@ const connect = function() {
   conn.on('data', (data) => {
     console.log('Server says: ', data);
   })
+  
   return conn;
 }
 
